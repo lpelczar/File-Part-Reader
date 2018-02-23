@@ -23,4 +23,9 @@ public class FilePartReaderTest {
     public void whenFilePartReaderInstantiatedThenFromLineIsSet() {
         assertEquals(2, filePartReader.getFromLine());
     }
+
+    @Test
+    public void whenFilePartReaderInstantiatedThenToLineIsSet() {
+        assertEquals(4, filePartReader.getToLine());
+    }
 }
