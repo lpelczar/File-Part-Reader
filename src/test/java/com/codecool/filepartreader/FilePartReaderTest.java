@@ -18,4 +18,9 @@ public class FilePartReaderTest {
     public void whenFilePartReaderInstantiatedThenFilePathIsSet() {
         assertEquals("test_data.txt", filePartReader.getFilePath());
     }
+
+    @Test
+    public void whenFilePartReaderInstantiatedThenFromLineIsSet() {
+        assertEquals(2, filePartReader.getFromLine());
+    }
 }
