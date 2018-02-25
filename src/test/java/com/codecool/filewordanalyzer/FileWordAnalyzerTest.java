@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 
 public class FileWordAnalyzerTest {
 
-    FileWordAnalyzer fileWordAnalyzer;
+    private FileWordAnalyzer fileWordAnalyzer;
 
     @Before
     public void before() {
