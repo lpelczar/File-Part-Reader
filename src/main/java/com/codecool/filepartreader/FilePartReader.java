@@ -1,5 +1,10 @@
 package com.codecool.filepartreader;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+
 public class FilePartReader {
 
     private String filePath;
@@ -35,5 +40,21 @@ public class FilePartReader {
 
     public void setToLine(int toLine) {
         this.toLine = toLine;
+    }
+
+    public String readLines() {
+        String content = "";
+        try {
+            content = read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String[] lines = content.split("\\r?\\n");
+        String[] resultLines = Arrays.copyOfRange(lines, fromLine - 1, toLine);
+        return String.join("\n", resultLines);
+    }
+
+    private String read() throws IOException {
+        return new String(Files.readAllBytes(Paths.get(filePath)));
     }
 }
