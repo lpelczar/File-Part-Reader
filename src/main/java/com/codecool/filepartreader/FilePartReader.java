@@ -49,6 +49,7 @@ public class FilePartReader {
 
     public String readLines() throws FileNotFoundException {
         String[] lines = read().split("\\r?\\n");
+        if (toLine > lines.length) throw new IllegalArgumentException("'toLine' is past end of file");
         String[] resultLines = Arrays.copyOfRange(lines, fromLine - 1, toLine);
         return String.join("\n", resultLines);
     }
