@@ -5,7 +5,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class FilePartReaderTest {
 
@@ -47,5 +49,13 @@ public class FilePartReaderTest {
         filePartReader.setToLine(1);
         exception.expect(IllegalArgumentException.class);
         filePartReader.setup(filePartReader.getFilePath(), filePartReader.getFromLine(), filePartReader.getToLine());
+    }
+
+    @Test
+    public void whenReadLinesCalledWithFromLine1AndToLine2ThenReturnsFirstTwoLines() {
+        filePartReader.setFromLine(1);
+        filePartReader.setToLine(2);
+        String result = filePartReader.readLines();
+        assertEquals("1a1\n2b 2a", result);
     }
 }
