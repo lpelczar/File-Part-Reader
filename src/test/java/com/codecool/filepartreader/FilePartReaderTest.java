@@ -76,4 +76,14 @@ public class FilePartReaderTest {
         String result = filePartReader.readLines();
         assertEquals("2b 2a\n3c 3b 3a\n4d 4cr 4bb4 4a", result);
     }
+
+    @Test
+    public void whenReadAllLinesThenReturnAllLines() throws FileNotFoundException {
+        filePartReader.setFromLine(1);
+        filePartReader.setToLine(7);
+        filePartReader.setFilePath("test_data.txt");
+        String result = filePartReader.readLines();
+        assertEquals("1a1\n2b 2a\n3c 3b 3a\n4d 4cr 4bb4 4a\n" +
+                "5e 5d 5c 5b 5ax\n6f 6ea 6d 6ca 6bb 6a\n7g 7f 7ea", result);
+    }
 }
