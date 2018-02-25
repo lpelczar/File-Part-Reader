@@ -45,4 +45,11 @@ public class FileWordAnalyzerTest {
         ArrayList<String> result = fileWordAnalyzer.wordsContainingSubString(subString);
         assertArrayEquals(expected.toArray(), result.toArray());
     }
+
+    @Test
+    public void whenWordArePalindromeCalledThenReturnWordsWhichArePalindromes() throws FileNotFoundException {
+        ArrayList<String> expected = new ArrayList<>(Arrays.asList("1a1", "4bb4"));
+        ArrayList<String> result = fileWordAnalyzer.wordsArePalindrome();
+        assertArrayEquals(expected.toArray(), result.toArray());
+    }
 }
