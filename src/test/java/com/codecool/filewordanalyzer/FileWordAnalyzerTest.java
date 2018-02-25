@@ -38,7 +38,8 @@ public class FileWordAnalyzerTest {
     }
 
     @Test
-    public void givenSubStringWhenWordsContainingSubStringCalledThenReturnWordsContainingThatSubString() {
+    public void givenSubStringWhenWordsContainingSubStringCalledThenReturnWordsContainingThatSubString()
+    throws FileNotFoundException {
         String subString = "ea";
         ArrayList<String> expected = new ArrayList<>(Arrays.asList("6ea", "7ea"));
         ArrayList<String> result = fileWordAnalyzer.wordsContainingSubString(subString);
