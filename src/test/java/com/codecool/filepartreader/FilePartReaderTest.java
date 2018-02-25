@@ -54,6 +54,12 @@ public class FilePartReaderTest {
     }
 
     @Test
+    public void whenReadLinesCalledBeforeSetupThenFileNotFoundException() throws FileNotFoundException {
+        exception.expect(FileNotFoundException.class);
+        filePartReader.readLines();
+    }
+
+    @Test
     public void whenReadLinesCalledWithFromLine1AndToLine2ThenReturnsFirstTwoLines() throws FileNotFoundException {
         filePartReader.setFromLine(1);
         filePartReader.setToLine(2);
@@ -63,8 +69,11 @@ public class FilePartReaderTest {
     }
 
     @Test
-    public void whenReadLinesCalledBeforeSetupThenFileNotFoundException() throws FileNotFoundException {
-        exception.expect(FileNotFoundException.class);
-        filePartReader.readLines();
+    public void whenReadLinesCalledWithFromLine2AndToLine4ThenReturnsAppropriateLines() throws FileNotFoundException {
+        filePartReader.setFromLine(2);
+        filePartReader.setToLine(4);
+        filePartReader.setFilePath("test_data.txt");
+        String result = filePartReader.readLines();
+        assertEquals("2b 2a\n3c 3b 3a\n4d 4cr 4bb4 4a", result);
     }
 }
