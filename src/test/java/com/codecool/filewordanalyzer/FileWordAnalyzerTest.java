@@ -18,6 +18,9 @@ public class FileWordAnalyzerTest {
     @Before
     public void before() {
         fileWordAnalyzer = new FileWordAnalyzer(new FilePartReader());
+        fileWordAnalyzer.getFilePartReader().setFilePath("test_data.txt");
+        fileWordAnalyzer.getFilePartReader().setFromLine(1);
+        fileWordAnalyzer.getFilePartReader().setToLine(7);
     }
 
     @Test
@@ -27,10 +30,9 @@ public class FileWordAnalyzerTest {
 
     @Test
     public void whenWordsByABCThenReturnWordsOrderedAlphabeticallyAsArrayList() throws FileNotFoundException {
-        fileWordAnalyzer.getFilePartReader().setFilePath("test_data.txt");
-        fileWordAnalyzer.getFilePartReader().setFromLine(1);
-        fileWordAnalyzer.getFilePartReader().setToLine(3);
-        ArrayList<String> expected = new ArrayList<>(Arrays.asList("1a1", "2a", "2b", "3a", "3b", "3c"));
+        ArrayList<String> expected = new ArrayList<>(Arrays.asList("1a1", "2a", "2b", "3a", "3b", "3c",
+                "4a", "4bb4", "4cr", "4d", "5ax", "5b", "5c", "5d", "5e", "6a", "6bb", "6ca", "6d",
+                "6ea", "6f", "7ea", "7f", "7g"));
         ArrayList<String> result = fileWordAnalyzer.wordsByABC();
         assertArrayEquals(expected.toArray(), result.toArray());
     }
