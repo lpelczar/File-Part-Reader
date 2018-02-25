@@ -4,8 +4,7 @@ import com.codecool.filepartreader.FilePartReader;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertNotNull;
 
 public class FileWordAnalyzerTest {
 
@@ -18,6 +17,6 @@ public class FileWordAnalyzerTest {
 
     @Test
     public void whenInstantiatedThenFilePartReaderIsSet() {
-        assertThat(fileWordAnalyzer.getFilePartReader(), instanceOf(FilePartReader.class));
+        assertNotNull(fileWordAnalyzer.getFilePartReader());
     }
 }
