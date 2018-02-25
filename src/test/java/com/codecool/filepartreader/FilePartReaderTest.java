@@ -61,4 +61,10 @@ public class FilePartReaderTest {
         String result = filePartReader.readLines();
         assertEquals("1a1\n2b 2a", result);
     }
+
+    @Test
+    public void whenReadLinesCalledBeforeSetupThenFileNotFoundException() {
+        exception.expect(FileNotFoundException.class);
+        filePartReader.readLines();
+    }
 }
