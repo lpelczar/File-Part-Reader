@@ -36,4 +36,12 @@ public class FileWordAnalyzerTest {
         ArrayList<String> result = fileWordAnalyzer.wordsByABC();
         assertArrayEquals(expected.toArray(), result.toArray());
     }
+
+    @Test
+    public void givenSubStringWhenWordsContainingSubStringCalledThenReturnWordsContainingThatSubString() {
+        String subString = "ea";
+        ArrayList<String> expected = new ArrayList<>(Arrays.asList("6ea", "7ea"));
+        ArrayList<String> result = fileWordAnalyzer.wordsContainingSubString(subString);
+        assertArrayEquals(expected.toArray(), result.toArray());
+    }
 }
