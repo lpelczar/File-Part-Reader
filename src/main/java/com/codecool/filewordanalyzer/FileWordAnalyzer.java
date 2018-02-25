@@ -34,4 +34,12 @@ public class FileWordAnalyzer {
                 .filter(x -> x.toUpperCase().contains(subString.toUpperCase()))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
+
+    public ArrayList<String> wordsArePalindrome() throws FileNotFoundException {
+        String[] words = filePartReader.readLines().split("\\W+");
+        List<String> wordsList = new ArrayList<>(Arrays.asList(words));
+        return wordsList.stream()
+                .filter(x -> x.toUpperCase().equals(new StringBuilder(x.toUpperCase()).reverse().toString()))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
 }
