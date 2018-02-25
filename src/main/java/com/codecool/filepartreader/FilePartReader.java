@@ -23,4 +23,14 @@ public class FilePartReader {
     public int getToLine() {
         return toLine;
     }
+
+    public void setFromLine(int fromLine) {
+        this.fromLine = fromLine;
+    }
+
+    public void setup(String filePath, int fromLine, int toLine) {
+        if (fromLine < 1) {
+            throw new IllegalArgumentException("'fromLine' cannot be less than 1");
+        }
+    }
 }
