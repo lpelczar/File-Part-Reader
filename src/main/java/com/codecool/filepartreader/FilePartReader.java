@@ -48,14 +48,7 @@ public class FilePartReader {
     }
 
     public String readLines() throws FileNotFoundException {
-        String content;
-        try {
-            content = read();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            throw e;
-        }
-        String[] lines = content.split("\\r?\\n");
+        String[] lines = read().split("\\r?\\n");
         String[] resultLines = Arrays.copyOfRange(lines, fromLine - 1, toLine);
         return String.join("\n", resultLines);
     }
