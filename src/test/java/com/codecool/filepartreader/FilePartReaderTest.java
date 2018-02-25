@@ -40,4 +40,12 @@ public class FilePartReaderTest {
         exception.expect(IllegalArgumentException.class);
         filePartReader.setup(filePartReader.getFilePath(), filePartReader.getFromLine(), filePartReader.getToLine());
     }
+
+    @Test
+    public void whenSetupMethodCalledWithToLineLowerThanFromLineThenIllegalArgumentException() {
+        filePartReader.setFromLine(2);
+        filePartReader.setToLine(1);
+        exception.expect(IllegalArgumentException.class);
+        filePartReader.setup(filePartReader.getFilePath(), filePartReader.getFromLine(), filePartReader.getToLine());
+    }
 }
