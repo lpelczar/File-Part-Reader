@@ -5,6 +5,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.io.FileNotFoundException;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -23,17 +25,17 @@ public class FilePartReaderTest {
 
     @Test
     public void whenFilePartReaderInstantiatedThenFilePathIsSet() {
-        assertEquals("test_data.txt", filePartReader.getFilePath());
+        assertEquals("", filePartReader.getFilePath());
     }
 
     @Test
     public void whenFilePartReaderInstantiatedThenFromLineIsSet() {
-        assertEquals(2, filePartReader.getFromLine());
+        assertEquals(0, filePartReader.getFromLine());
     }
 
     @Test
     public void whenFilePartReaderInstantiatedThenToLineIsSet() {
-        assertEquals(4, filePartReader.getToLine());
+        assertEquals(0, filePartReader.getToLine());
     }
 
     @Test
@@ -55,6 +57,7 @@ public class FilePartReaderTest {
     public void whenReadLinesCalledWithFromLine1AndToLine2ThenReturnsFirstTwoLines() {
         filePartReader.setFromLine(1);
         filePartReader.setToLine(2);
+        filePartReader.setFilePath("test_data.txt");
         String result = filePartReader.readLines();
         assertEquals("1a1\n2b 2a", result);
     }

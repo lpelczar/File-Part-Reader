@@ -12,9 +12,9 @@ public class FilePartReader {
     private int toLine;
 
     public FilePartReader() {
-        this.filePath = "test_data.txt";
-        this.fromLine = 2;
-        this.toLine = 4;
+        this.filePath = "";
+        this.fromLine = 0;
+        this.toLine = 0;
     }
 
     public String getFilePath() {
@@ -33,13 +33,17 @@ public class FilePartReader {
         this.fromLine = fromLine;
     }
 
+    public void setToLine(int toLine) {
+        this.toLine = toLine;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
     public void setup(String filePath, int fromLine, int toLine) {
         if (fromLine < 1) throw new IllegalArgumentException("'fromLine' cannot be less than 1");
         if (toLine < fromLine) throw new IllegalArgumentException("'toLine' cannot be less than 'fromLine'");
-    }
-
-    public void setToLine(int toLine) {
-        this.toLine = toLine;
     }
 
     public String readLines() {
