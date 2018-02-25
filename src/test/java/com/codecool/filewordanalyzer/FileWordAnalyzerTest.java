@@ -4,6 +4,7 @@ import com.codecool.filepartreader.FilePartReader;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -25,7 +26,7 @@ public class FileWordAnalyzerTest {
     }
 
     @Test
-    public void whenWordsByABCThenReturnWordsOrderedAlphabeticallyAsArrayList() {
+    public void whenWordsByABCThenReturnWordsOrderedAlphabeticallyAsArrayList() throws FileNotFoundException {
         fileWordAnalyzer.getFilePartReader().setFilePath("test_data.txt");
         fileWordAnalyzer.getFilePartReader().setFromLine(1);
         fileWordAnalyzer.getFilePartReader().setToLine(3);
