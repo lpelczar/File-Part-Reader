@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class FilePartReader {
 
@@ -46,19 +47,20 @@ public class FilePartReader {
         if (toLine < fromLine) throw new IllegalArgumentException("'toLine' cannot be less than 'fromLine'");
     }
 
-    public String readLines() {
-        String content = "";
+    public String readLines() throws FileNotFoundException {
+        String content;
         try {
             content = read();
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
+            throw e;
         }
         String[] lines = content.split("\\r?\\n");
         String[] resultLines = Arrays.copyOfRange(lines, fromLine - 1, toLine);
         return String.join("\n", resultLines);
     }
 
-    private String read() throws IOException {
-        return new String(Files.readAllBytes(Paths.get(filePath)));
+    private String read() throws FileNotFoundException {
+        return new Scanner(new File(filePath)).useDelimiter("\\Z").next();
     }
 }
